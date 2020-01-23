@@ -1,0 +1,16 @@
+<%= form_with scope: :list, url: lists_path, local: true do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %><br>
+  </p>
+
+  <p>
+    <%= form.label :status %><br>
+    <%= form.text_field :status %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>
