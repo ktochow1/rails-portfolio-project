@@ -1,0 +1,16 @@
+<%= form_with scope: :task, url: tasks_path, local: true do |form| %>
+  <p>
+    <%= form.label :content %><br>
+    <%= form.text_field :content %><br>
+  </p>
+
+  <p>
+    <%= form.label :task_status %><br>
+    <%= form.text_field :task_status %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>

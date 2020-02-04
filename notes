@@ -1,0 +1,24 @@
+User Flow
+
+
+- Sign up/login form
+  - VALIDATIONS
+    if user is signed in - redirect to user home page
+    if user is NOT signed in - redirect to sign up/login
+      -sign up checks to see if username and password are valid
+        -if not valid - show error message
+        -if valid redirect to user home
+
+
+- User home 
+  - CRUD lists (validations - if_logged_in?)
+    - C = create new
+    - R = show :id
+    - U = update form
+    - D = destroy action
+
+  - CRUD tasks (validations - if_logged_in?)
+    - C = create new
+    - R = show :id
+    - U = update form
+    - destroy
