@@ -6,7 +6,7 @@ class ListsController < ApplicationController
     @list = List.new(list_params)
 
     @list.save
-    # binding.pry
+    binding.pry
     redirect_to @list
   end
 
@@ -20,6 +20,7 @@ class ListsController < ApplicationController
   end
 
   def new
+    @list = List.new
   end
 
   def edit

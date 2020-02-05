@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
 
-skip_before_action :authorized, only: [:new, :create] #allows the two methods to skip the authorized method requirement
+# skip_before_action :authorized, only: [:new, :create] #allows the two methods to skip the authorized method requirement
+
+  # def authorized
+  #   redirect_to '/welcome' unless logged_in?
+  # end
 
   def new
     @user = User.new
@@ -9,7 +13,7 @@ skip_before_action :authorized, only: [:new, :create] #allows the two methods to
   def create
     #signup
     @user = User.new(user_params)
-
+    @user.save
     session[:user_id] = @user.id
 
     redirect_to '/welcome'

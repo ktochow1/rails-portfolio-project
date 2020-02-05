@@ -1,8 +1,8 @@
 <h1>Welcome!</h1>
 
 
-<% if logged_in? %> 
-<h1>You're logged in!<%= current_user.username %></h1>
+<% if logged_in? %>
+<h1>You're logged in!<%= @current_user %></h1>
  <%end%>
-<%= button_to "Login", '/login', method: :get %>
-<%= button_to "Sign Up", '/users/new', method: :get %>
+<%= button_to "Create New List", '/lists/new', method: :get %>
+<%= button_to "Log Out", '/users/:id', method: :delete %>

@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
 
 
   def current_user
-    @current_user ||= User.find_by(id: session[:user])
+    # binding.pry
+    @current_user = User.find_by(id: session[:user])
     # User.find_by(id: session[:user_id])
   end
 
@@ -12,7 +13,7 @@ class ApplicationController < ActionController::Base
     current_user != nil?
   end
 
-  def authorized
-    redirect_to '/welcome' unless logged_in?
-  end
+  # def authorized
+  #   redirect_to '/welcome' unless logged_in?
+  # end
 end
