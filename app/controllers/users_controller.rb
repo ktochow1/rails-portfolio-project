@@ -6,6 +6,8 @@ class UsersController < ApplicationController
   #   redirect_to '/welcome' unless logged_in?
   # end
 
+
+#validation error when saving a list - list needs a user - can't find where validation error is
   def new
     @user = User.new
   end
@@ -13,6 +15,7 @@ class UsersController < ApplicationController
   def create
     #signup
     @user = User.new(user_params)
+    raise params[:user].inspect
     @user.save
     session[:user_id] = @user.id
 

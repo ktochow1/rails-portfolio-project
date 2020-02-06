@@ -4,9 +4,10 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
-
+    @list.valid?
+    raise @list.errors.full_messages.inspect
     @list.save
-    binding.pry
+    # binding.pry
     redirect_to @list
   end
 

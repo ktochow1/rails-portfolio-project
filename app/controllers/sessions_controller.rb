@@ -17,6 +17,8 @@ class SessionsController < ApplicationController
   end
 
   def delete
+    session[:user_id] = nil
+    redirect_to '/welcome'
   end
 
   def welcome

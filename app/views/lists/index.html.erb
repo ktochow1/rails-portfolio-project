@@ -1,1 +1,4 @@
-<%= @lists %>
+<% @lists.each do |list|  %>
+  <%= list.title %><br>
+  <%= list.status %>
+<% end %>
