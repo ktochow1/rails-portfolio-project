@@ -5,7 +5,7 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     @list.valid?
-    raise @list.errors.full_messages.inspect
+    # raise @list.errors.full_messages.inspect
     @list.save
     # binding.pry
     redirect_to @list

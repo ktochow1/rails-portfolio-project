@@ -1,0 +1,12 @@
+class CreateUsersTable03 < ActiveRecord::Migration[5.2]
+  def up
+    create_table :users do |t|
+      t.string :username
+      t.string :password_digest
+    end
+  end
+
+  def down
+    IrreversibleMigration
+  end
+end
