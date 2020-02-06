@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_25_042213) do
+ActiveRecord::Schema.define(version: 2020_02_06_030940) do
 
   create_table "lists", force: :cascade do |t|
     t.string "title"
@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 2020_01_25_042213) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
-    t.integer "list_id"
   end
 
 end
