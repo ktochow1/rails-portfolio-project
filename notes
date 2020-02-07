@@ -21,24 +21,10 @@ User Flow
     - C = create new
     - R = show :id
     - U = update form
-    - destroy\
+    - destroy
 
 
 
-    create_table "lists", force: :cascade do |t|
-      t.string "title"
-      t.integer "user_id"
-      t.string "status"
-    end
-
-    create_table "tasks", force: :cascade do |t|
-      t.string "task_status"
-      t.string "content"
-      t.integer "list_id"
-      t.integer "user_id"
-    end
-
-    create_table "users", force: :cascade do |t|
-      t.string "username"
-      t.string "password_digest"
-    end
+ sign up / logout "work"
+---
+work on: validations / authentications

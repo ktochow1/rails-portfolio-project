@@ -13,13 +13,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    #signup
     @user = User.new(user_params)
-    raise params[:user].inspect
     @user.save
+    # ebinding.pry
     session[:user_id] = @user.id
-
-    redirect_to '/welcome'
+    redirect_to users_path(@user)
   end
 
   def edit
@@ -43,6 +41,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :password_digest)
+    params.require(:user).permit(:username, :password)
   end
 end

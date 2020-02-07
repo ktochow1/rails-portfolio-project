@@ -3,9 +3,9 @@ class ListsController < ApplicationController
 
 
   def create
-    @list = List.new(list_params)
-    @list.valid?
-    # raise @list.errors.full_messages.inspect
+    @list = List.create(list_params)
+
+    @list.user_id = current_user
     @list.save
     # binding.pry
     redirect_to @list
@@ -17,7 +17,6 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
-    # binding.pry
   end
 
   def new
@@ -30,7 +29,11 @@ class ListsController < ApplicationController
   def update
   end
 
-  def destroy
+  def destroy #LISTCONTROLLER
+    # binding.pry
+    @list = List.find(params[:id]).destroy
+
+    redirect_to list_url
   end
 
   private

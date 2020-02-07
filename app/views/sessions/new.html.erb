@@ -1,10 +1,14 @@
-<h1>Login</h1>
+<h1>Welcome back! Login</h1>
 <%= form_for(:session, url: login_path) do |f| %>
+  Username: <%= f.text_field :username %><br>
+  Password: <%= f.password_field :password %><br>
+  Log In <%= f.submit %>
+<% end %><br>
+<br>
 
 
-Username: <%= f.text_field :username %><br>
-Password: <%= f.password_field :password %><br>
-Log In <%= f.submit %>
-<%end%>
-
-<!-- <p>New User? link_to "Sign Up Now!", signup_path </p> -->
+<%= form_for(User.new) do |f| %>
+  Username: <%= f.text_field :username %><br>
+  Password: <%= f.password_field :password %><br>
+  Sign Up <%= f.submit %>
+<% end %>
