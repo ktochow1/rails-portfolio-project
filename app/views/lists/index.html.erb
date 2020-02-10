@@ -1,4 +1,7 @@
 <% @lists.each do |list|  %>
   <%= list.title %><br>
-  <%= list.status %>
+  <%= list.status %><br>
+  <%= link_to "Details", list_path(list.id) %><br>
+  <br>
+
 <% end %>

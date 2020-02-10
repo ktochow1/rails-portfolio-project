@@ -24,16 +24,23 @@ class ListsController < ApplicationController
   end
 
   def edit
+    @list = List.find(params[:id])
   end
 
   def update
+    # raise params.inspect
+    @list = List.find(params[:id])
+    # binding.pry
+    @list.update(params.require(:list).permit(:title, :status))
+      redirect_to @list
+    # else
+      # render :action => 'update'
+    # end
   end
 
-  def destroy #LISTCONTROLLER
-    # binding.pry
-    @list = List.find(params[:id]).destroy
-
-    redirect_to list_url
+  def destroy
+    @list = List.find_by(params[:id]).destroy
+    redirect_to new_list_path
   end
 
   private
