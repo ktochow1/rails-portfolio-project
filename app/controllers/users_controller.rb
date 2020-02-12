@@ -14,10 +14,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.save
-    # ebinding.pry
-    session[:user_id] = @user.id
-    redirect_to users_path(@user)
+    if @user.valid?
+      @user.save
+      session[:user_id] = @user.id
+      redirect_to users_path(@user)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -40,7 +43,9 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:user).permit(:username, :password)
   end
+
 end

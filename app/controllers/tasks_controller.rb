@@ -2,7 +2,11 @@ class TasksController < ApplicationController
 
 
   def new
-    @task = Task.new
+    if authorized
+      @task = Task.new
+    else
+      redirect '/login'
+    end
   end
 
   def create
@@ -25,7 +29,11 @@ class TasksController < ApplicationController
   end
 
   def index
-    @tasks = Task.all
+    if authorized
+      @tasks = Task.all
+    else
+      redirect_to '/login'
+    end
   end
 
   private

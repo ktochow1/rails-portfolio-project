@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :lists, except: :destroy
-  resources :users
+  resources :lists do
+    resources :tasks#, only: [:new, :show]
+  end
+  resources :users do
+    resources :tasks#, only: [:new, :show]
+  end
   resources :tasks
   # resources :sessions
 
@@ -10,7 +14,7 @@ Rails.application.routes.draw do
 
   get 'lists/:id/edit', to: 'lists#edit'
   patch 'lists/:id', to: 'lists#update'
-
+  get '/lists/new', to: 'lists#new'
   delete 'logout', to: 'sessions#delete'
   delete '/lists/:id', to: 'lists#destroy'
   get 'signup', to: 'users#new'

@@ -28,3 +28,18 @@ User Flow
  sign up / logout "work"
 ---
 work on: validations / authentications
+
+
+
+
+
+<%= form_for(list) do |f| %>
+
+  <label>Title:</label><br>
+  <%= f.text_field :title %><br>
+  <label>Status:</label><br>
+  <%= f.text_field :status %><br>
+
+  <%= f.submit %>
+
+<%end%>

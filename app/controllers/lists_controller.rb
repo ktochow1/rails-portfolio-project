@@ -12,35 +12,46 @@ class ListsController < ApplicationController
   end
 
   def index
-    @lists = List.all
+    if authorized
+      @lists = List.all
+    else
+      redirect_to '/login'
+    end
   end
 
   def show
-    @list = List.find(params[:id])
+    if authorized
+      @list = List.find(params[:id])
+    else
+      redirect_to '/login'
+    end
   end
 
   def new
-    @list = List.new
+    if authorized
+      @list = List.new
+    else
+      redirect_to '/login'
+    end
   end
 
   def edit
-    @list = List.find(params[:id])
+    if authorized
+      @list = List.find(params[:id])
+    else
+      redirect_to '/login'
+    end
   end
 
   def update
-    # raise params.inspect
     @list = List.find(params[:id])
-    # binding.pry
-    @list.update(params.require(:list).permit(:title, :status))
-      redirect_to @list
-    # else
-      # render :action => 'update'
-    # end
+    @list.update(list_params)
+    redirect_to @list
   end
 
   def destroy
     @list = List.find_by(params[:id]).destroy
-    redirect_to new_list_path
+    redirect_to lists_path
   end
 
   private
