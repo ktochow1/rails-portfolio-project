@@ -1,7 +1,4 @@
-class Task < ActiveRecord::Base
+class Task < ApplicationController
   belongs_to :list
-  belongs_to :user
-  validates_presence_of :content
-  #join table
-  
+
 end

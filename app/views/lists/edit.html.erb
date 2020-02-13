@@ -1,9 +1,5 @@
 
-
-
-
-
-<%= @list.title %>
-<%= @list.status %>
+<label>Title: </label><%= @list.title %>
+<label>Status: </label><%= @list.status %>
 
 <%= render partial: 'form', locals: {list: @list} %>
