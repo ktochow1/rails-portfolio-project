@@ -2,16 +2,17 @@ class TasksController < ApplicationController
 
 
   def new
-    if authorized
-      @task = Task.new
-    else
-      redirect '/login'
-    end
+    @task = Task.new
   end
 
   def create
-    @task = Task.new(task_params)
-    @task.list
+    if logged_in?
+      @task = Task.new(task_params)
+      @list.id = list_id
+      current_user.id = user_id
+    else
+      redirect_to '/login'
+    end
   end
 
 
@@ -29,7 +30,7 @@ class TasksController < ApplicationController
   end
 
   def index
-    if authorized
+    if logged_in?
       @tasks = Task.all
     else
       redirect_to '/login'

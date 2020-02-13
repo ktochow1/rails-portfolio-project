@@ -4,7 +4,6 @@ class ListsController < ApplicationController
 
   def create
     @list = List.create(list_params)
-
     @list.user_id = current_user
     @list.save
     # binding.pry
@@ -12,7 +11,7 @@ class ListsController < ApplicationController
   end
 
   def index
-    if authorized
+    if logged_in?
       @lists = List.all
     else
       redirect_to '/login'
@@ -20,7 +19,7 @@ class ListsController < ApplicationController
   end
 
   def show
-    if authorized
+    if logged_in?
       @list = List.find(params[:id])
     else
       redirect_to '/login'
@@ -28,15 +27,11 @@ class ListsController < ApplicationController
   end
 
   def new
-    if authorized
-      @list = List.new
-    else
-      redirect_to '/login'
-    end
+    @list = List.new
   end
 
   def edit
-    if authorized
+    if logged_in?
       @list = List.find(params[:id])
     else
       redirect_to '/login'

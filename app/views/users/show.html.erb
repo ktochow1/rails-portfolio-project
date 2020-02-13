@@ -1,2 +1,6 @@
-<h1>Welcome back, <%= current_user.username.capitalize %>!<br>
-<%= link_to "Create New List", new_list_path, method: :get %>
+<h1>Welcome back, <%= current_user.username.capitalize %>!<br><br>
+
+
+<%= button_to "Create New List", '/lists/new', method: :get %>
+<%= button_to "My Lists", lists_path(@user)%>
+<%= button_to "Log Out", logout_path, method: :delete %>

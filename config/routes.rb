@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   get 'lists/:id/edit', to: 'lists#edit'
   patch 'lists/:id', to: 'lists#update'
-  get '/lists/new', to: 'lists#new'
+  # get '/lists/new', to: 'lists#new'
   delete 'logout', to: 'sessions#delete'
   delete '/lists/:id', to: 'lists#destroy'
   get 'signup', to: 'users#new'

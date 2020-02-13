@@ -2,9 +2,10 @@
 
 
 <% @lists.each do |list|  %>
-  <%= list.title %><br>
-  <%= list.status %><br>
+  <label>Title: </label><%= list.title %><br>
+  <label>Status: </label><%= list.status %><br>
   <%= link_to "Details", list_path(list.id) %><br>
+  
   <br>
 
 <% end %>
