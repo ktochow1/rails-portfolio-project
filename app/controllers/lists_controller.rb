@@ -1,7 +1,5 @@
 class ListsController < ApplicationController
 #where info is collected
-
-
   def create
     @list = List.create(list_params)
     @list.user_id = current_user
@@ -20,6 +18,7 @@ class ListsController < ApplicationController
 
   def show
     if logged_in?
+      @user = current_user
       @list = List.find(params[:id])
     else
       redirect_to '/login'
@@ -51,6 +50,6 @@ class ListsController < ApplicationController
 
   private
   def list_params
-    params.require(:list).permit(:title, :status)
+    params.require(:list).permit(:title, :status, user_ids: [])
   end
 end
