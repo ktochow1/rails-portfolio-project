@@ -10,11 +10,13 @@ class ProjectAssignmentsController < ApplicationController
 
     @pa = ProjectAssignment.create(pa_params)
     @pa.user_id = current_user.id
+    @pa.location = params[:project_assignment][:location]
     @pa.created_at = Date.civil
-
     params[:project_assignment][:list_id].shift
-    @pa.list_id = params[:project_assignment][:list_id][0].to_i #how to make subsequent lists convert to_i ?
+    @pa.list_id = params[:project_assignment][:list_id][0].to_i
+    @pa.list = params[:project_assignment][:list] #how to make subsequent lists convert to_i ?
     @pa.save
+    binding.pry
 
     redirect_to user_project_assignment_path(current_user.id, @pa.id)
   end
@@ -24,9 +26,12 @@ class ProjectAssignmentsController < ApplicationController
   end
 
   def show
-
+    @pa.location
     @pa = ProjectAssignment.find_by(params[:id])
-     binding.pry
+
+    @pa.list.title = List.find_by(params[:title])
+    # @pa.list = ProjectAssignment.find_by(params[:list])
+
 
   end
 
