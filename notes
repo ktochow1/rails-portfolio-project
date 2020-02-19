@@ -27,3 +27,8 @@ User Flow
 
 - how to connect user with list through project_assignment
   does p_a need a controller/actions/forms?
+
+
+
+  <!-- <label>Lists: </label><%=# f.collection_select :list_id, List.all, :id, :title %><br><br><br> -->
+  <!-- <label>User: </label><%=# f.collection_select :user_id, User.all, :id, :username %> -->

@@ -5,8 +5,7 @@
 <%#binding.pry%>
   <label>Location: </label><%= f.text_field :location %><br><br><br>
   <label>Today's Date: </label><%= select_date Date.today, prefix: :created_at %><br><br><br>
-  <label>Lists: </label><%= f.collection_select :list, List.all, :id, :title %><br><br><br>
-  <label>User: </label><%= f.collection_select :user, User.all, :id, :username %>
+  <label>Lists: </label><%= f.collection_check_boxes(:list_id, List.all, :id, :title) %>
   <%= f.submit "Create" %>
 <%end%>
 <br>

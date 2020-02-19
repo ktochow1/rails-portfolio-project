@@ -2,7 +2,7 @@ class ListsController < ApplicationController
 #where info is collected
   def create
     @list = List.create(list_params)
-    @list.user_id = current_user
+    @list.user_id = current_user.id
     @list.save
     # binding.pry
     redirect_to @list

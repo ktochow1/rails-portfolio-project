@@ -1,27 +1,22 @@
 class ProjectAssignmentsController < ApplicationController
+
   def new
     @pa = ProjectAssignment.new
     @lists = List.all
+    @pa.user_id = current_user.id
   end
 
   def create
 
     @pa = ProjectAssignment.create(pa_params)
-    @pa.user_id = params[:project_assignment][:user].to_i
+    @pa.user_id = current_user.id
     @pa.created_at = Date.civil
-    @pa.list_id = params[:project_assignment][:list].to_i
+
+    params[:project_assignment][:list_id].shift
+    @pa.list_id = params[:project_assignment][:list_id][0].to_i #how to make subsequent lists convert to_i ?
     @pa.save
-    # binding.prye
-    # current_user.id = @user.id
 
-    # binding.pry
-    # @pa.user_id = params[:user_id]
-
-    # @lists = List.all
-    # @pa.list_id = List.find_by(params[:id])
-    # binding.pry
-    redirect_to(@pa.id)
-    # binding.pry
+    redirect_to user_project_assignment_path(current_user.id, @pa.id)
   end
 
   def index
@@ -31,6 +26,7 @@ class ProjectAssignmentsController < ApplicationController
   def show
 
     @pa = ProjectAssignment.find_by(params[:id])
+     binding.pry
 
   end
 
