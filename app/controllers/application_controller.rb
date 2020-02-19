@@ -1,15 +1,10 @@
 class ApplicationController < ActionController::Base
   # before_action :current_user #macro required authorized method to run before any other action is taken
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :authorized
 
 
   def current_user
-    if session[:user_id]
-      # binding.pry
-      @current_user ||= User.find(session[:user_id])
-    else
-      @current_user = nil
-    end
+    current_user = User.find(session[:user_id])
   end
 
   def authorized
@@ -19,8 +14,8 @@ class ApplicationController < ActionController::Base
   def logged_in?
     !current_user.nil?
   end
-
-  def authorized
-    redirect_to '/login' unless logged_in?
-  end
+  #
+  # def authorized
+  #   redirect_to '/login' unless logged_in?
+  # end
 end

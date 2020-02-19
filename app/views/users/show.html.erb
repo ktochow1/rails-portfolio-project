@@ -1,7 +1,10 @@
-<h1>Welcome back, <%= current_user.username.capitalize %>!<br><br>
+<h1>Welcome,<br><%= current_user.username.capitalize %>!<br><br>
 
 
-<%= button_to "Create New List", '/lists/new', method: :get %>
-<%= button_to "My Lists", lists_path(@user)%>
+
+<%= button_to "My Lists", lists_path%>
+
+
 <%= button_to "Log Out", logout_path, method: :delete %>
-<%# <%= button_to "Add Task", new_list_task_path %>
+
+<%= link_to "New Project", new_user_project_assignment_path(@user), method: :get %>

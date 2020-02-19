@@ -17,9 +17,17 @@ class UsersController < ApplicationController
     if @user.valid?
       @user.save
       session[:user_id] = @user.id
-      redirect_to users_path(@user)
+      redirect_to user_path(@user)
     else
       render :new
+    end
+  end
+
+  def show
+    if current_user.valid?
+      @user = User.find_by(params[:id])
+    else
+      redirect_to '/login'
     end
   end
 

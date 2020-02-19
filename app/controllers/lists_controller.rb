@@ -19,7 +19,8 @@ class ListsController < ApplicationController
   def show
     if logged_in?
       @user = current_user
-      @list = List.find(params[:id])
+      @list = List.find_by(params[:id])
+      # redirect_to list_path(:id)
     else
       redirect_to '/login'
     end
