@@ -14,7 +14,7 @@ class ProjectAssignmentsController < ApplicationController
     @pa.created_at = Date.civil
     params[:project_assignment][:list_id].shift
     @pa.list_id = params[:project_assignment][:list_id][0].to_i
-    @pa.list = params[:project_assignment][:list] #how to make subsequent lists convert to_i ?
+    # @pa.list = params[:project_assignment][:list] #how to make subsequent lists convert to_i ?
     @pa.save
     binding.pry
 
