@@ -26,7 +26,8 @@ class ProjectAssignmentsController < ApplicationController
   end
 
   def show
-    @pa.location
+    # binding.pry
+
     @pa = ProjectAssignment.find_by(params[:id])
 
     @pa.list.title = List.find_by(params[:title])
