@@ -10,19 +10,20 @@ class ProjectAssignmentsController < ApplicationController
     @pa = ProjectAssignment.create(pa_params)
     @pa.user_id = current_user.id
     @pa.location = params[:project_assignment][:location]
-    @pa.created_at = Date.civil(params[:created_at][:year].to_i, params[:created_at][:month].to_i, params[:created_at][:day].to_i)
     # binding.pry
-    # @list_ids = params[:project_assignment][:list_id]
-    # @list_ids.shift
-    @pa.list_id = ProjectAssignment.find(params[:list_id])
-    if @list_ids.length > 1
-      flash[:alert] = "Too many Lists selected."
-      redirect_to new_user_project_assignment_path(current_user.id)
-    else
-      @pa.list_id = params[:project_assignment][:list_id][0].to_i
-      @pa.save
+    @pa.created_at = Date.civil(params[:created_at][:year].to_i, params[:created_at][:month].to_i, params[:created_at][:day].to_i)
+
+    @pa.list_id = params[:project_assignment][:list_id]
+    binding.pry
+    # @pa.list_id = params[:project_assignment][:list_id][0].to_i
+     if @pa.list_id.length > 1
+       flash[:alert] = "Too many Lists selected."
+       redirect_to new_user_project_assignment_path(current_user.id)
+     else
+       @pa.list_id = params[:project_assignment][:list_id][0].to_i
+       @pa.save
       redirect_to user_project_assignment_path(current_user.id, @pa.id)
-    end
+     end
   end
 
   def index
