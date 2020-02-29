@@ -1,0 +1,12 @@
+<%= form_for task do |f| %>
+  <%# <%= f.hidden_field :list_id %>
+
+  <%= f.label :task_status %>
+  <%= f.text_field :task_status %>
+
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+
+  <%= f.submit %>
+
+<%end%>

@@ -9,9 +9,15 @@ class ListsController < ApplicationController
   end
 
   def index
+    # binding.pry
+    # @user = current_user
     if logged_in?
       @lists = List.all
-    else
+    # elsif
+    #   @list == nil
+    #     flash[:alert] = "No lists yet."
+    #     redirect_to new_user_project_assignment_path(current_user.id)
+     else
       redirect_to '/login'
     end
   end
@@ -51,6 +57,6 @@ class ListsController < ApplicationController
 
   private
   def list_params
-    params.require(:list).permit(:title, :status, user_ids: [])
+    params.require(:list).permit(:title, :status) #ommitted user_id = []
   end
 end

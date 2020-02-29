@@ -1,0 +1,4 @@
+<% @pa.each do |pa| %>
+    <%= pa.user.username %><br>
+    <%= link_to pa.location, user_project_assignment_path(current_user.id, pa.id) %><br><br>
+<% end %>

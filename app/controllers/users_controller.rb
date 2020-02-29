@@ -26,6 +26,8 @@ class UsersController < ApplicationController
   def show
     if current_user.valid?
       @user = User.find_by(params[:id])
+      binding.pry
+      # @user.project_assignments = ProjectAssignment.find(params[:user_id])
     else
       redirect_to '/login'
     end

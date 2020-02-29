@@ -2,9 +2,12 @@
 
 
 
-<%= button_to "My Lists", lists_path%>
+<h4>My Projects</h4><br>
+  <% @current_user.project_assignments.each do |pa| %>
+    <label><strong>Location: </strong></label><%= link_to pa.location, user_project_assignment_path(@user.id, pa.id) %><br>
+  <%end%>
 
-
-<%= button_to "Log Out", logout_path, method: :delete %>
-
+<h4><%= link_to "All Projects", user_project_assignments_path(@user) %></h4>
+<h4><%= link_to "My Projects", user_project_assignments_path(@user) %></h4>
+<%= button_to "Log Out", logout_path, method: :delete %><br>
 <%= link_to "New Project", new_user_project_assignment_path(@user), method: :get %>

@@ -10,7 +10,18 @@
   </head>
 
   <body>
-    <%=yield%><br>
-
+    <header class="clearfix">
+      <div class="nav">
+        <ul>
+          <% if logged_in? %>
+          <li><%= link_to "Home", user_path(current_user) %></li>
+          <li><%= link_to "New Project", new_user_project_assignment_path(current_user) %></li>
+          <%end%>
+      </ul>
+      </div>
+    </header>
+      <div class="content">
+          <%=yield%><br>
+      </div>
   </body>
 </html>

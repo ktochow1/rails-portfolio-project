@@ -1,6 +1,5 @@
 <p>
-  <strong>Title:</strong>
-  <label>Title: </label><%= @list.title %>
+  <label><strong>Title: </strong></label><%= @list.title %>
 </p>
 
 <p>
@@ -13,3 +12,4 @@
 <%= button_to "Delete List", list_path, method: :delete %>
 <%= link_to "All Lists", lists_path %>
 <%= button_to "Home", user_path %>
+<%= link_to "Add Task", new_list_task_path(@list.id), method: :get %>

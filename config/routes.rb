@@ -4,22 +4,16 @@ Rails.application.routes.draw do
     resources :tasks, only: [:show, :new, :index, :create]
     resources :project_assignments, only: [:show, :new, :index, :create]
   end
+  resources :project_assignments, only: :destroy
   resources :users do
     resources :project_assignments, only: [:show, :new, :index, :create]
   end
 
-
-
-  # resources :sessions
-
+  get '/lists', to: 'lists#index'
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#delete'
-
-  # get 'lists/:id/edit', to: 'lists#edit'
-  # patch 'lists/:id', to: 'lists#update'
-
-
+  
   get 'signup', to: 'users#new'
   post 'signup', to: 'users#create'
 

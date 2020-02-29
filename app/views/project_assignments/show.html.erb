@@ -1,6 +1,7 @@
-<h1>Your Project Assignments</h1><br><br><br>
+<h1>Your Project Assignment</h1><br><br><br>
 
-<label>Location: </label><%= @pa.location %><br><br><br>
-<label>Created at: </label><%= @pa.created_at %><br><br><br>
+<label><strong>Location: </strong></label><%= @pa.location %><br><br><br>
+<label><strong>Created at: </strong></label><%= @pa.created_at.month.to_s %> <%= @pa.created_at.day %>, <%= @pa.created_at.year %><br><br><br>
+<label><strong>List: </strong></label><%= @pa.list %>
 
-<label>List: </label><%= @pa.list.title %>
+<%= link_to "Delete Project", project_assignment_path(@pa.id), method: :delete %>
