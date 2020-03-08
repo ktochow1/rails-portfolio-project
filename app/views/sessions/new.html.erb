@@ -1,6 +1,9 @@
 <h1>Welcome back! Login</h1>
-<%= form_for(:session, url: login_path) do |f| %>
-  Username: <%= f.text_field :username %><br>
+
+<%= link_to "Login Via Facebook", "/auth/facebook" %>
+<%binding.pry%>
+<%= form_for(:session, url: login_path, method: "POST") do |f| %>
+  Email: <%= f.text_field :email %><br>
   Password: <%= f.password_field :password %><br>
   Log In <%= f.submit %>
 <% end %><br>
@@ -8,7 +11,7 @@
 
 
 <%= form_for(User.new) do |f| %>
-  Username: <%= f.text_field :username %><br>
+  Email: <%= f.text_field :email %><br>
   Password: <%= f.password_field :password %><br>
   Sign Up <%= f.submit %>
 <% end %>

@@ -1,26 +1,31 @@
 class SessionsController < ApplicationController
 # skip_before_action :authorized, only: [:new, :create, :welcome]
-
-
-  def authorized
-    redirect_to '/login' unless logged_in?
-  end
-
   def new
-    #login
+    render :new
   end
 
   def create
-    # binding.pry
-    @user = User.find_by(username: params[:session][:username])
+    @user = User.find_by(email: params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
+      # session[:current_user_id] = current_user.id
+      session[:user_id] = current_user
       # binding.pry
-      session[:user_id] = @user.id
+      # @user.id = User.find(session[:user_id])
+      binding.pry
       redirect_to user_path(@user.id)
     else
-      flash.now[:error] = 'Invalid email/password combination'
-      render :new
+      flash[:message] = "Sorry, please try again."
+      redirect_to '/login'
     end
+  end
+
+  def oauth_login
+    @user = User.from_omniauth(auth_hash)
+    @user.name = auth_hash['info']['name']
+    @user.save
+    session[:user_id] = @user.id
+    binding.pry
+    redirect_to user_path(@user.id)
   end
 
   def delete
@@ -30,7 +35,8 @@ class SessionsController < ApplicationController
 
   private
 
-  def user_params
-    params.require(:sessions).permit(:username, :password)
+  def auth_hash
+    request.env['omniauth.auth']
   end
+
 end

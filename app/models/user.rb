@@ -4,7 +4,14 @@ class User < ActiveRecord::Base
   has_secure_password
   accepts_nested_attributes_for :lists
   # accepts_nested_attributes_for :project_assignments
-  validates :username, presence: true
-  # validates :password_digest, presence: true
-  # accepts_nested_attributes_for
+  validates :email, presence: true
+
+  def self.from_omniauth(auth_hash)
+    where(email: auth_hash['info']['email']).first_or_create do |user|
+      user.name = auth_hash['info']['name']
+      user.email = auth_hash['info']['email']
+      user.password = SecureRandom.hex
+    end
+  end
+
 end

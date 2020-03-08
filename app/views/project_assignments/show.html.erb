@@ -2,6 +2,6 @@
 
 <label><strong>Location: </strong></label><%= @pa.location %><br><br><br>
 <label><strong>Created at: </strong></label><%= @pa.created_at.month.to_s %> <%= @pa.created_at.day %>, <%= @pa.created_at.year %><br><br><br>
-<label><strong>List: </strong></label><%= @pa.list %>
+<label><strong>List: </strong></label><%= link_to @pa.list.title, list_path(@pa.list_id) %><br><br>
 
 <%= link_to "Delete Project", project_assignment_path(@pa.id), method: :delete %>

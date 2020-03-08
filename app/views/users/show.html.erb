@@ -1,13 +1,17 @@
-<h1>Welcome,<br><%= current_user.username.capitalize %>!<br><br>
-
-
+<%binding.pry%>
+<% if session[:user_id] == @user.id %>
+  <h1><%= @user.name %></h1>
+  <h3>Email: <%= @user.email %></h3>
+  <img src="<%= @user.image %>">
+<% else %>
+  <%= link_to 'Log in with Facebook!', '/auth/facebook' %>
+<%end%>
 
 <h4>My Projects</h4><br>
-  <% @current_user.project_assignments.each do |pa| %>
-    <label><strong>Location: </strong></label><%= link_to pa.location, user_project_assignment_path(@user.id, pa.id) %><br>
+  <% @user.project_assignments.each do |pa| %>
+    <label><strong>Location: </strong></label><%= link_to pa.location, user_project_assignment_path(pa.user_id, pa.id) %><br>
   <%end%>
 
 <h4><%= link_to "All Projects", user_project_assignments_path(@user) %></h4>
-<h4><%= link_to "My Projects", user_project_assignments_path(@user) %></h4>
+
 <%= button_to "Log Out", logout_path, method: :delete %><br>
-<%= link_to "New Project", new_user_project_assignment_path(@user), method: :get %>

@@ -9,8 +9,6 @@ class ListsController < ApplicationController
   end
 
   def index
-    # binding.pry
-    # @user = current_user
     if logged_in?
       @lists = List.all
     # elsif
@@ -26,7 +24,8 @@ class ListsController < ApplicationController
     if logged_in?
       @user = current_user
       @list = List.find_by(params[:id])
-      # redirect_to list_path(:id)
+      # @list.task_id = Task.find_by(params[:id])
+
     else
       redirect_to '/login'
     end

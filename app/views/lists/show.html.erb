@@ -1,15 +1,27 @@
 <p>
-  <label><strong>Title: </strong></label><%= @list.title %>
+  <label><strong>Title: </strong></label><%= @list.title.capitalize %>
 </p>
 
 <p>
   <strong>Status:</strong>
-  <label>Status: </label><%= @list.status %>
+  <label>Status: </label><%= @list.status.capitalize %>
 </p><br>
 
-<%= link_to "Edit List", edit_list_path(@list) %>
+<% if @list.tasks == false %>
+    <%= 'No Tasks' %>
+  <% else %>
+    <% @list.tasks.each do |t| %>
+    <label><strong>Task Content: </strong></label><%= t.content.capitalize %><br>
+    <label><strong>Task Status: </strong></label><%= t.task_status.capitalize %><br>
+    <%= link_to "Edit Task", edit_list_task_path(@list.id, t.id) %><br>
+    <%= link_to "Completed", task_path(t.id), method: :delete %><br><br>
+  <% end %>
+<% end %>
+
+
+<%= link_to "Edit List", edit_list_path(@list.id), method: :get %><br>
 <%# <%= button_to "Add Task", new_list_task_url %>
-<%= button_to "Delete List", list_path, method: :delete %>
-<%= link_to "All Lists", lists_path %>
-<%= button_to "Home", user_path %>
-<%= link_to "Add Task", new_list_task_path(@list.id), method: :get %>
+<%= link_to "Delete List", list_path, method: :delete %><br>
+<%= link_to "All Lists", lists_path %><br>
+<%= link_to "Home", user_path %><br>
+<%= link_to "Add Task", new_list_task_path(@list.id), method: :get %><br>

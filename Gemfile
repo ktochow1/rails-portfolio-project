@@ -6,7 +6,8 @@ gem 'bcrypt'
 gem 'pry'
 gem 'omniauth'
 gem 'omniauth-facebook'
-
+gem 'omniauth-github'
+gem 'dotenv-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record
