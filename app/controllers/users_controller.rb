@@ -16,15 +16,26 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(params[:id])
-  end
+    @user = User.find_by(id: params[:id])
+    if session[:user_id] == @user.id
+      @user
 
-  def edit
-    if logged_in?
-      @user = User.find(params[:id])
     else
       redirect_to '/login'
     end
+  end
+
+  def edit
+    @user = User.find_by(id: params[:id])
+  end
+
+  def update
+      @user = User.find_by(id: params[:id])
+      @user.update(user_params)
+      @user.email = params[:user][:email]
+      @user.name = params[:user][:name]
+      @user.save
+      redirect_to @user
   end
 
   private

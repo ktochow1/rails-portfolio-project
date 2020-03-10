@@ -4,17 +4,12 @@ class ListsController < ApplicationController
     @list = List.create(list_params)
     @list.user_id = current_user.id
     @list.save
-    # binding.pry
     redirect_to @list
   end
 
   def index
     if logged_in?
       @lists = List.all
-    # elsif
-    #   @list == nil
-    #     flash[:alert] = "No lists yet."
-    #     redirect_to new_user_project_assignment_path(current_user.id)
      else
       redirect_to '/login'
     end
@@ -24,8 +19,6 @@ class ListsController < ApplicationController
     if logged_in?
       @user = current_user
       @list = List.find_by(params[:id])
-      # @list.task_id = Task.find_by(params[:id])
-
     else
       redirect_to '/login'
     end

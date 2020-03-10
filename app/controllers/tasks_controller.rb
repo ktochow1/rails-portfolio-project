@@ -12,7 +12,6 @@ class TasksController < ApplicationController
       @task = Task.new(task_params)
       @task.list_id = List.find_by(params[:id]).id
       @task.save
-      # binding.pry
       redirect_to list_task_path(@task.list_id, @task.id)
 
     else
@@ -28,12 +27,6 @@ class TasksController < ApplicationController
     end
   end
 
-  # def create
-  #   @user = User.new(user_params)
-  #   @user.save
-  #   session[:user_id] = @user.id
-  #   redirect_to '/welcome'
-  # end
   def edit
     if logged_in?
       @task = Task.find(params[:id])

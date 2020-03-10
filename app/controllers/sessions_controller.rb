@@ -7,11 +7,7 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(email: params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
-      # session[:current_user_id] = current_user.id
-      session[:user_id] = current_user
-      # binding.pry
-      # @user.id = User.find(session[:user_id])
-      binding.pry
+      session[:user_id] = @user.id
       redirect_to user_path(@user.id)
     else
       flash[:message] = "Sorry, please try again."
@@ -24,7 +20,6 @@ class SessionsController < ApplicationController
     @user.name = auth_hash['info']['name']
     @user.save
     session[:user_id] = @user.id
-    binding.pry
     redirect_to user_path(@user.id)
   end
 

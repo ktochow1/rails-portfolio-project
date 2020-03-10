@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   get '/lists', to: 'lists#index'
 
+  post '/users/:id', to: 'users#update'
+
   resources :lists do
     resources :tasks, only: [:show, :new, :index, :create, :edit]
     resources :project_assignments, only: [:show, :new, :index, :create]

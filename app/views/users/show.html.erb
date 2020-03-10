@@ -1,11 +1,7 @@
-<%binding.pry%>
-<% if session[:user_id] == @user.id %>
+
   <h1><%= @user.name %></h1>
   <h3>Email: <%= @user.email %></h3>
   <img src="<%= @user.image %>">
-<% else %>
-  <%= link_to 'Log in with Facebook!', '/auth/facebook' %>
-<%end%>
 
 <h4>My Projects</h4><br>
   <% @user.project_assignments.each do |pa| %>
@@ -15,3 +11,5 @@
 <h4><%= link_to "All Projects", user_project_assignments_path(@user) %></h4>
 
 <%= button_to "Log Out", logout_path, method: :delete %><br>
+
+<%= link_to "Edit User", edit_user_path(@user) %><br>

@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
   has_many :project_assignments
   has_secure_password
   accepts_nested_attributes_for :lists
-  # accepts_nested_attributes_for :project_assignments
   validates :email, presence: true
 
   def self.from_omniauth(auth_hash)
