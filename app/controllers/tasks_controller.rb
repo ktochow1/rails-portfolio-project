@@ -2,28 +2,29 @@ class TasksController < ApplicationController
 
 
   def new
-    if logged_in?
+      binding.pry
       @task = Task.new
-      list_id = List.find_by(params[:id])
-    end
+      @task.list_id = params[:list_id].to_i
+      # binding.pry
+      # @task.list_id = List.find(params[:id])
+
   end
 
   def create
+      binding.pry
+      # @task.list_id = Task.find(params[:list_id])
       @task = Task.new(task_params)
-      @task.list_id = List.find_by(params[:id]).id
+      # binding.pry
+      # @task.list_id = List.find(params[:id])
       @task.save
-      redirect_to list_task_path(@task.list_id, @task.id)
-
-    else
-      redirect_to '/login'
-    end
+      redirect_to list_path(@task.list_id)
   end
 
 
   def show
     if logged_in?
-      @task = Task.find_by(id: params[:id])
-      @task.list_id = List.find_by(id: params[:id])
+      @task = Task.find(params[:id])
+      @task.list_id = List.find(params[:id])
     end
   end
 
@@ -37,13 +38,14 @@ class TasksController < ApplicationController
 
 
   def update
-    @task = Task.find_by(params[:id])
+    @task = Task.find(params[:id])
     @task.update(task_params)
+    redirect_to list_path(@task.list_id)
   end
 
   def destroy
     @task = Task.find_by(id: params[:id]).destroy
-    redirect_to list_path(@task.list.id)
+    redirect_to list_path(@task.list_id)
   end
 
   def index
