@@ -1,15 +1,18 @@
 
-  <h1><%= @user.name %></h1>
-  <h3>Email: <%= @user.email %></h3>
+  <h2>Welcome, <%= @user.name %>!</h2>
   <img src="<%= @user.image %>">
 
-<h4>My Projects</h4><br>
-  <% @user.project_assignments.each do |pa| %>
-    <label><strong>Location: </strong></label><%= link_to pa.location, user_project_assignment_path(pa.user_id, pa.id) %><br>
-  <%end%>
+<div class="projects_box">
+  <h4 id="MyProjectsHeading">My Projects</h4><br>
+    <% @user.project_assignments.each do |pa| %>
+      <label><strong>Location: </strong></label><%= link_to pa.location, user_project_assignment_path(pa.user_id, pa.id) %><br>
+    <%end%>
+</div>
 
-<h4><%= link_to "All Projects", user_project_assignments_path(@user) %></h4>
 
-<%= button_to "Log Out", logout_path, method: :delete %><br>
 
-<%= link_to "Edit User", edit_user_path(@user) %><br>
+
+<p>
+  <%= link_to "Edit User", edit_user_path(@user) %><br>
+  <%= button_to "Log Out", logout_path, method: :destroy %><br>
+</p>

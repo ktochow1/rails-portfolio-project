@@ -3,12 +3,11 @@
 </p>
 
 <p>
-  <strong>Status:</strong>
-  <label>Status: </label><%= @list.status.capitalize %>
+  <label><strong>Status: </strong></label><%= @list.status.capitalize %>
 </p><br>
 
-<% if @list.tasks == false %>
-    <%= 'No Tasks' %>
+<% if @list.tasks.empty? == true %>
+    <%= 'No Tasks' %><br><br><br>
   <% else %>
     <% @list.tasks.each do |t| %>
     <label><strong>Task Content: </strong></label><%= t.content.capitalize %><br>
@@ -20,8 +19,8 @@
 
 
 <%= link_to "Edit List", edit_list_path(@list.id), method: :get %><br>
-<%# <%= button_to "Add Task", new_list_task_url %>
-<%= link_to "Delete List", list_path, method: :delete %><br>
+
+<%= link_to "Delete List", lists_path(@list.id), method: :destroy %><br>
 <%= link_to "All Lists", lists_path %><br>
 <%= link_to "Home", user_path %><br>
 <%= link_to "Add Task", new_list_task_path(@list.id), method: :get %><br>

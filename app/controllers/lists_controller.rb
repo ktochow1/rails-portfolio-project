@@ -2,7 +2,8 @@ class ListsController < ApplicationController
 #where info is collected
   def create
     @list = List.create(list_params)
-    @list.user_id = current_user.id
+    binding.pry
+    # @list.user_id = current_user.id
     @list.save
     redirect_to @list
   end
@@ -16,6 +17,7 @@ class ListsController < ApplicationController
   end
 
   def show
+    # binding.pry
     if logged_in?
       @user = current_user
       @list = List.find_by(params[:id])
@@ -43,7 +45,8 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    @list = List.find_by(params[:id]).destroy
+    binding.pry
+    @list = List.find_by(params[:id]).destroy!
     redirect_to lists_path
   end
 

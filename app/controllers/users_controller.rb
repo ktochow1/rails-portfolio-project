@@ -34,6 +34,7 @@ class UsersController < ApplicationController
       @user.update(user_params)
       @user.email = params[:user][:email]
       @user.name = params[:user][:name]
+      binding.pry
       @user.save
       redirect_to @user
   end

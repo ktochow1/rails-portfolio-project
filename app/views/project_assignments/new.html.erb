@@ -8,7 +8,15 @@
 <%#binding.pry%>
   <label><strong>Location: </strong></label><%= f.text_field :location %><br><br><br>
   <label><strong>Today's Date: </strong></label><%= select_date Date.today, prefix: :created_at %><br><br><br>
-  <label><strong>List (choose 1):</strong></label><%= f.collection_check_boxes(:list_id, List.all, :id, :title) %><br><br>
+  <!-- <label><strong>List (choose 1):</strong></label><%#= f.collection_check_boxes(:list_id, List.all, :id, :title) %><br><br>
+  <label><strong>New List:</strong></label><%#= f.text_field :list%> -->
+  <% @lists.each do |l| %>
+    <p>
+      <strong><label for="list_id_<%=l.id%>"><%=l.title%></label></strong><br>
+      <input type="checkbox" name="list[list_ids][]" value="<%=l.id%>" id="list_id_<%=l.id%>"><%=l.title%>
+    </p>
+    <%end%>
+
   <%= f.submit "Create" %>
 <%end%>
 <br>

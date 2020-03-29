@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  delete '/lists/:id', to: 'lists#destroy'
   get 'login', to: 'sessions#new'
 
   post 'login', to: 'sessions#create'
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback' => 'sessions#oauth_login'
 
   get '/lists', to: 'lists#index'
+
 
   post '/users/:id', to: 'users#update'
 

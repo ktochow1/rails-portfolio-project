@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   def new
       binding.pry
       @task = Task.new
-      @task.list_id = params[:list_id].to_i
+      # @task.list_id = params[:list_id].to_i
       # binding.pry
       # @task.list_id = List.find(params[:id])
 

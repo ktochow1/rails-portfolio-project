@@ -1,6 +1,8 @@
 header {
   background: brown;
-  padding: 10px;
+  text-align: center;
+  margin: 20px 0 0 ;
+  padding: 10px 0 ;
   ul {
     margin: 0;
     padding: 0;
@@ -9,6 +11,7 @@ header {
   li {
     display: inline;
     float: center;
+    padding: 5px 5px;
   }
   a {
     text-decoration: none;
