@@ -2,22 +2,15 @@ class TasksController < ApplicationController
 
 
   def new
-      binding.pry
-      @task = Task.new
-      # @task.list_id = params[:list_id].to_i
-      # binding.pry
-      # @task.list_id = List.find(params[:id])
-
+    @task = Task.new
+    @task.list_id = params[:list_id].to_i
   end
 
   def create
-      binding.pry
-      # @task.list_id = Task.find(params[:list_id])
-      @task = Task.new(task_params)
-      # binding.pry
-      # @task.list_id = List.find(params[:id])
-      @task.save
-      redirect_to list_path(@task.list_id)
+    @task = Task.new(task_params)
+    @task.list_id = params[:list_id].to_i
+    @task.save
+    redirect_to list_path(@task.list_id)
   end
 
 

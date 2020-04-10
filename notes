@@ -32,3 +32,97 @@ User Flow
 
   <!-- <label>Lists: </label><%=# f.collection_select :list_id, List.all, :id, :title %><br><br><br> -->
   <!-- <label>User: </label><%=# f.collection_select :user_id, User.all, :id, :username %> -->
+
+
+
+
+
+
+
+
+
+
+  <%= form_for model: @task, method: :post do |f| %>
+      <%= f.label :content %><br>
+      <%= f.text_field :content %><br>
+      <%= f.label :task_status %><br>
+      <%= f.text_field :task_status %><br>
+      <%= f.submit %>
+  <% end %>
+
+
+
+
+
+lists/show
+
+  <p>
+    <label><strong>Title: </strong></label><%= @list.title.capitalize %>
+  </p>
+
+  <p>
+    <label><strong>Status: </strong></label><%= @list.status.capitalize %>
+  </p><br>
+
+  <% if @list.tasks.empty? == true %>
+      <%= 'No Tasks' %><br><br><br>
+    <% else %>
+      <% @list.tasks.each do |t| %>
+      <label><strong>Task Content: </strong></label><%= t.content.capitalize %><br>
+      <label><strong>Task Status: </strong></label><%= t.task_status.capitalize %><br>
+      <%= link_to "Edit Task", edit_list_task_path(@list.id, t.id) %><br>
+      <%= link_to "Completed", task_path(t.id), method: :delete %><br><br>
+    <% end %>
+  <% end %>
+
+
+  <%= link_to "Edit List", edit_list_path(@list.id), method: :get %><br>
+
+  <%= link_to "Delete List", lists_path(@list.id), method: :destroy %><br>
+  <%= link_to "All Lists", lists_path %><br>
+
+  <%=# link_to "Add Task", new_list_task_path(@list.id), method: :get %><br>
+  <%= form_with model: @list do |f| %>
+    <%= fields_for :task, @list.tasks do |f| %>
+      <%= f.label :content %>
+      <%= f.textfield :content %><br>
+      <%= f.label :status %>
+      <%=f.textfield :status %>
+    <%end%>
+  )end
+
+
+
+  <%= form_for list do |f| %>
+
+    <%= f.label :title %>
+    <%= f.text_field :title  %>
+
+    <%= f.label :status %>
+    <%= f.text_field :status %>
+
+    <%= f.submit %>
+
+  <%end%>
+
+
+
+
+
+
+
+
+
+
+
+
+  <% if @list.tasks.empty? == true %>
+      <%= 'No Tasks' %><br><br><br>
+    <% else %>
+      <% @list.tasks.each do |t| %>
+      <label><strong>Task Content: </strong></label><%= t.content.capitalize %><br>
+      <label><strong>Task Status: </strong></label><%= t.task_status.capitalize %><br>
+      <%= link_to "Edit Task", edit_list_task_path(@list.id, t.id) %><br>
+      <%= link_to "Completed", task_path(@task.id), method: :delete %><br><br>
+    <% end %>
+  <% end %>

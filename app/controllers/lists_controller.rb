@@ -1,11 +1,8 @@
 class ListsController < ApplicationController
-#where info is collected
   def create
     @list = List.create(list_params)
-    binding.pry
-    # @list.user_id = current_user.id
     @list.save
-    redirect_to @list
+    redirect_to lists_path
   end
 
   def index
@@ -17,10 +14,9 @@ class ListsController < ApplicationController
   end
 
   def show
-    # binding.pry
     if logged_in?
-      @user = current_user
-      @list = List.find_by(params[:id])
+      @list = List.find_by(id: params[:id])
+      @task = Task.find_by(id: params[:id])
     else
       redirect_to '/login'
     end
@@ -45,13 +41,12 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    binding.pry
-    @list = List.find_by(params[:id]).destroy!
+    @list = List.find(params[:id]).destroy!
     redirect_to lists_path
   end
 
   private
   def list_params
-    params.require(:list).permit(:title, :status) #ommitted user_id = []
+    params.require(:list).permit(:title, :status)
   end
 end

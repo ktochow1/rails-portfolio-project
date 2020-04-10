@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   delete '/lists/:id', to: 'lists#destroy'
   get 'login', to: 'sessions#new'
+  delete '/tasks/:id', to: 'tasks#destroy'
+  patch '/tasks/:id', to: 'tasks#update'
+
 
   post 'login', to: 'sessions#create'
 
@@ -12,17 +15,17 @@ Rails.application.routes.draw do
 
   get '/auth/facebook/callback' => 'sessions#oauth_login'
 
-  get '/lists', to: 'lists#index'
-
-
   post '/users/:id', to: 'users#update'
 
   resources :lists do
     resources :tasks, only: [:show, :new, :index, :create, :edit]
     resources :project_assignments, only: [:show, :new, :index, :create]
   end
+
   resources :project_assignments, only: :destroy
+
   resources :tasks, only: [:destroy, :update]
+
   resources :users do
     resources :project_assignments, only: [:show, :new, :index, :create]
   end

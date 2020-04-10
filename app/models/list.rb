@@ -7,11 +7,4 @@ class List < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :status
 
-  # 
-  # def lists=(lists_hashes)
-  #   lists_hashes.each do |i, lists_hashes|
-  #     list = List.find_or_create_by(title: lists_hashes[:title])
-  #     self.project_assignments.build(:list => list)
-  #   end
-  # end
 end

@@ -1,11 +1,8 @@
-<%#= form_with model: @task, url: '/lists/:list_id/tasks' do |f| %>
-<%binding.pry%>
-<%= form_with model: @task, url: '/lists/:list_id/tasks', method: :post do |f| %>
-    <%= f.label :content %><br>
-    <%= f.text_field :content %><br>
-    <%= f.label :task_status %><br>
-    <%= f.text_field :task_status %><br>
-    <%= f.submit %>
+<%= form_with model: @task, url: "/lists/#{@task.list_id}/tasks" do |form| %>
 
-
-<% end %>
+  <%= form.label :content %><br>
+  <%= form.text_field :content %><br>
+  <%= form.label :task_status %><br>
+  <%= form.text_field :task_status %>
+  <%= form.submit %>
+<%end%>

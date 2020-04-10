@@ -11,16 +11,14 @@ class ProjectAssignmentsController < ApplicationController
   end
 
   def create
-    binding.pry
     @pa = ProjectAssignment.create(pa_params)
     @pa.user_id = current_user.id
     @pa.location = params[:project_assignment][:location]
     @pa.list_id = params[:list][:list_ids][0].to_i
     @pa.list_id.to_i
-    # @pa.list_id = params[:project_assignment][:list_id][0].to_i
     @pa.created_at = Date.civil(params[:created_at][:year].to_i, params[:created_at][:month].to_i, params[:created_at][:day].to_i)
-      @pa.save
-      redirect_to user_project_assignment_path(current_user.id, @pa.id)
+    @pa.save
+    redirect_to user_project_assignment_path(current_user.id, @pa.id)
   end
 
   def index

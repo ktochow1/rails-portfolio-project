@@ -1,4 +1,4 @@
-<%= form_with(url: task_path, method: "patch")do |f| %>
+<%= form_for task do |f| %>
 
   <%= f.label :content %>
   <%= f.text_field :content %>

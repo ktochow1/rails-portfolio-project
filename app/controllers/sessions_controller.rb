@@ -1,7 +1,11 @@
 class SessionsController < ApplicationController
-# skip_before_action :authorized, only: [:new, :create, :welcome]
+
   def new
+    if logged_in?
+      redirect_to user_path(current_user)
+    else
     render :new
+  end
   end
 
   def create
