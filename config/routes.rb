@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   delete '/tasks/:id', to: 'tasks#destroy'
   patch '/tasks/:id', to: 'tasks#update'
-
+  get '/users/most_lists', to: 'users#most_lists'
 
   post 'login', to: 'sessions#create'
 

@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_secure_password
   accepts_nested_attributes_for :lists
   validates :email, presence: true
+  scope :most_lists, -> {joins(:project_assignments).where('user.id = project_assignments.list_id ?', true)}
 
   def self.from_omniauth(auth_hash)
     where(email: auth_hash['info']['email']).first_or_create do |user|
@@ -12,5 +13,10 @@ class User < ActiveRecord::Base
       user.password = SecureRandom.hex
     end
   end
+
+
+
+
+
 
 end

@@ -39,6 +39,11 @@ class UsersController < ApplicationController
       redirect_to @user
   end
 
+  def most_lists
+    binding.pry
+    @user = User.most_lists
+  end
+
   private
 
   def user_params
