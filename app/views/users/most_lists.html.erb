@@ -1,1 +1,1 @@
-<%= @user %>
+User with most Project Assignments: <%= @user.max_by{|x| x}.name%>
