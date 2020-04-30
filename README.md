@@ -1,8 +1,8 @@
 # README
 
 RailsToDo is your Task-List Manager!
-After forking this repository to your local environment,
-run rails s in your terminal. This will open a rails server whose domain is located
+After forking this repository to your local environment, run `bundle install` to access all necessary gems and dependencies.
+Run `rails s` in your terminal. This will open a rails server whose domain is located
 at http://localhost:3000 .
 To get started, go to http://localhost:3000/login to sign up.
 After submitting an email and password, you will be directed to the home page 
@@ -24,15 +24,3 @@ Get organized and have fun!
 
 Ruby version:
 2.6.1
-
-Dependencies: 
-gem 'bcrypt'
-gem 'omniauth'
-gem 'omniauth-facebook'
-gem 'rails', '~> 5.2.3'
-gem 'puma', '~> 3.11'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
-gem 'turbolinks', '~> 5'
-
