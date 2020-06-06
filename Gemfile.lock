@@ -127,9 +127,6 @@ GEM
       rack (>= 1.6.2, < 3)
     omniauth-facebook (6.0.0)
       omniauth-oauth2 (~> 1.2)
-    omniauth-github (1.4.0)
-      omniauth (~> 1.5)
-      omniauth-oauth2 (>= 1.4.0, < 2.0)
     omniauth-oauth2 (1.6.0)
       oauth2 (~> 1.1)
       omniauth (~> 1.9)
@@ -215,7 +212,7 @@ GEM
       railties (>= 5.0)
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.4)
+    websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
 
@@ -234,7 +231,6 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   omniauth
   omniauth-facebook
-  omniauth-github
   pry
   puma (~> 3.11)
   rails (~> 5.2.3)
