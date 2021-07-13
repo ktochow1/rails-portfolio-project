@@ -42,7 +42,7 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    addressable (2.7.0)
+    addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
@@ -127,16 +127,13 @@ GEM
       rack (>= 1.6.2, < 3)
     omniauth-facebook (6.0.0)
       omniauth-oauth2 (~> 1.2)
-    omniauth-github (1.4.0)
-      omniauth (~> 1.5)
-      omniauth-oauth2 (>= 1.4.0, < 2.0)
     omniauth-oauth2 (1.6.0)
       oauth2 (~> 1.1)
       omniauth (~> 1.9)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
-    public_suffix (4.0.3)
+    public_suffix (4.0.6)
     puma (3.12.4)
     rack (2.2.2)
     rack-test (1.1.0)
@@ -234,7 +231,6 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   omniauth
   omniauth-facebook
-  omniauth-github
   pry
   puma (~> 3.11)
   rails (~> 5.2.3)
